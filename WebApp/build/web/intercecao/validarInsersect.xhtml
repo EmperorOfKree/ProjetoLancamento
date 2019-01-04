@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Validar Intersecção</title>
+    </h:head>
+    <h:body>
+        <h1 style="margin-top: 0;">Validar Intersecção</h1>
+        
+        <h:form>
+             <br />
+             <p:messages for="MessageID" showDetail="true" autoUpdate="true" closable="true" />
+             <br />
+            <p:panelGrid columns="3" >
+                <p:outputLabel id="faixa1" value="Faixa 1:" />
+                <p:inputText id="faixa1num1" value="#{intersecao.num1Faixa1}" required="true" requiredMessage="O primeiro valor da Faixa 1 deve ser informado!" type="number" converterMessage="Favor informar apenas números!" />
+                <p:inputText id="faixa1num2" value="#{intersecao.num2Faixa1}" required="true" requiredMessage="O primeiro valor da Faixa 1 deve ser informado!" type="number" converterMessage="Favor informar apenas números!" />
+                <p:outputLabel id="faixa2" value="Faixa 2:" />
+                <p:inputText id="faixa2num1" value="#{intersecao.num1Faixa2}" required="true" requiredMessage="O primeiro valor da Faixa 1 deve ser informado!" type="number" converterMessage="Favor informar apenas números!" />
+                <p:inputText id="faixa2num2" value="#{intersecao.num2Faixa2}" required="true" requiredMessage="O primeiro valor da Faixa 1 deve ser informado!" type="number" converterMessage="Favor informar apenas números!" />
+            </p:panelGrid>
+            
+            <p:commandButton value="Validar Intersecção" actionListener="#{intersecao.calculaIntersecao()}" />
+        </h:form>
+    </h:body>
+</html>
+

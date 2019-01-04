@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateLancamentoitemTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateLancamentoitemLabel_oid}" for="oid" />
+                    <h:inputText id="oid" value="#{lancamentoitemController.selected.oid}" title="#{bundle.CreateLancamentoitemTitle_oid}" required="true" requiredMessage="#{bundle.CreateLancamentoitemRequiredMessage_oid}"/>
+                    <h:outputLabel value="#{bundle.CreateLancamentoitemLabel_oidItem}" for="oidItem" />
+                    <h:selectOneMenu id="oidItem" value="#{lancamentoitemController.selected.oidItem}" title="#{bundle.CreateLancamentoitemTitle_oidItem}" required="true" requiredMessage="#{bundle.CreateLancamentoitemRequiredMessage_oidItem}">
+                        <f:selectItems value="#{itemController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateLancamentoitemLabel_oidLancamento}" for="oidLancamento" />
+                    <h:selectOneMenu id="oidLancamento" value="#{lancamentoitemController.selected.oidLancamento}" title="#{bundle.CreateLancamentoitemTitle_oidLancamento}" required="true" requiredMessage="#{bundle.CreateLancamentoitemRequiredMessage_oidLancamento}">
+                        <f:selectItems value="#{lancamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{lancamentoitemController.create}" value="#{bundle.CreateLancamentoitemSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{lancamentoitemController.prepareList}" value="#{bundle.CreateLancamentoitemShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateLancamentoitemIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

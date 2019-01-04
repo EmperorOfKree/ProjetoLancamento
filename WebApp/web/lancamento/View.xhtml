@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLancamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLancamentoLabel_oid}"/>
+                    <h:outputText value="#{lancamentoController.selected.oid}" title="#{bundle.ViewLancamentoTitle_oid}"/>
+                    <h:outputText value="#{bundle.ViewLancamentoLabel_dtInicial}"/>
+                    <h:outputText value="#{lancamentoController.selected.dtInicial}" title="#{bundle.ViewLancamentoTitle_dtInicial}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewLancamentoLabel_dtFinal}"/>
+                    <h:outputText value="#{lancamentoController.selected.dtFinal}" title="#{bundle.ViewLancamentoTitle_dtFinal}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewLancamentoLabel_vlTotal}"/>
+                    <h:outputText value="#{lancamentoController.selected.vlTotal}" title="#{bundle.ViewLancamentoTitle_vlTotal}"/>
+                    <h:outputText value="#{bundle.ViewLancamentoLabel_observacao}"/>
+                    <h:outputText value="#{lancamentoController.selected.observacao}" title="#{bundle.ViewLancamentoTitle_observacao}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{lancamentoController.destroyAndView}" value="#{bundle.ViewLancamentoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewLancamentoEditLink}"/>
+                <br />
+                <h:commandLink action="#{lancamentoController.prepareCreate}" value="#{bundle.ViewLancamentoCreateLink}" />
+                <br />
+                <h:commandLink action="#{lancamentoController.prepareList}" value="#{bundle.ViewLancamentoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewLancamentoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
